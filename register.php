@@ -17,71 +17,62 @@ session_start();
 <body>
 
 <div id="layout" class="pure-g">
-    <div class="sidebar pure-u-1 pure-u-md-1-4">
+    <div class="sidebar pure-u-1 pure-u-md-1-5">
         <div class="header">
-            <h1 class="brand-title">Camagru</h1>
-            <h2 class="brand-tagline">Share your photos montages</h2>
-
+            <h2 class="brand-tagline">Share your photos montages on camagru</h2>
             <nav class="nav">
                 <ul class="nav-list">
                     <li class="nav-item">
-                        <a class="pure-button" href="http://purecss.io">made with PureCSS</a>
+                        <a class="pure-button" href="http://purecss.io">PureCSS</a>
                     </li>
                 </ul>
             </nav>
         </div>
     </div>
 
-    <div class="content pure-u-1 pure-u-md-3-4">
-        <div>
+    <div class="content pure-u-1">
             <div class="posts">
-                <h3> Thanks you for chosen Camagru ! </h3>
-            </div>
+            <h3> Thanks you for chosen Camagru ! </h3>
+            <section class="post center">
+                <div class="pure-u-1 form-box" style="padding-top: 20%">
+                    <form method="post" class="pure-form pure-form-aligned" action="php/register.php">
 
-            <div class="posts">
+                        <?php  if(isset($_SESSION['error']))
+                                {
+                                    echo $_SESSION['error'];
+                                    $_SESSION['error'] = null;
+                                }
+                         ?>
 
-                <section class="post center">
-                    <div class="pure-u-1 form-box">
-                        <form method="post" class="pure-form pure-form-aligned" action="php/register.php">
+                        <div class="pure-control-group">
+                            <label for="name">Username</label>
+                            <input id="username" name="username" type="text" placeholder="Username">
+                        </div>
 
-                            <?php  if(isset($_SESSION['error']))
-                                    {
-                                        echo $_SESSION['error'];
-                                        $_SESSION['error'] = null;
-                                    }
-                             ?>
+                        <div class="pure-control-group">
+                            <label for="password">Password</label>
+                            <input id="password" name="password" type="password" placeholder="Password">
+                        </div>
 
-                            <fieldset>
-                                <div class="pure-control-group">
-                                    <label for="name">Username</label>
-                                    <input id="username" name="username" type="text" placeholder="Username">
-                                </div>
+                        <div class="pure-control-group">
+                            <label for="email">Email Address</label>
+                            <input id="email" name="email" type="email" placeholder="Email Address">
+                        </div>
 
-                                <div class="pure-control-group">
-                                    <label for="password">Password</label>
-                                    <input id="password" name="password" type="password" placeholder="Password">
-                                </div>
+                        <div class="pure-controls">
+                        <span class="pure-form-message-inline">A confimation mail will be send for finalise register.</span> 
 
-                                <div class="pure-control-group">
-                                    <label for="email">Email Address</label>
-                                    <input id="email" name="email" type="email" placeholder="Email Address">
-                                </div>
+                            <label for="cb" class="pure-checkbox">
+                                <input id="cb" type="checkbox"> I've read <a href="#">the terms and conditions</a>
+                            </label>
+                            <button type="submit" name="submit" value="send" class="pure-button pure-button-primary">Submit</button>
+                        </div>
 
-                                <div class="pure-controls">
-                                <span class="pure-form-message-inline">A confimation mail will be send for finalise register.</span> 
-
-                                    <label for="cb" class="pure-checkbox">
-                                        <input id="cb" type="checkbox"> I've read <a href="#">the terms and conditions</a>
-                                    </label>
-                                    <button type="submit" name="submit" value="send" class="pure-button pure-button-primary">Submit</button>
-                                </div>
-                            </fieldset>
-                        </form>
-                    </div>
-                </section>
+                    </form>
+                </div>
+            </section>
             <div class="footer">
                 &ndash; Made by fpeng with PureCss for school project.
-            </div>
         </div>
     </div>
 </div>

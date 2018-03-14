@@ -8,7 +8,6 @@ include_once './php/verify.php';
 <body>
 <div>
     <?php include('html/menu.html') ?>
-    <div id="login">
     <?php if (verify($_GET["token"]) == 1) { ?>
         <div class="text-box pure-u-1 pure-u-md-1-2 pure-u-lg-2-3">
             <div class="l-box">
@@ -24,7 +23,6 @@ include_once './php/verify.php';
             </div>
         </div>
     <?php } ?>
-    </div>
 </div>
 </body>
 </HTML>

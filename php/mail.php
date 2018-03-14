@@ -6,7 +6,7 @@ function send_verification_email($toAddr, $toUsername, $token, $ip) {
 
   $headers  = 'MIME-Version: 1.0' . "\r\n";
   $headers .= 'Content-type: text/html; charset=UTF-8' . "\r\n";
-  $headers .= 'From: <fpengs@student.42.fr>' . "\r\n";
+  $headers .= 'From: <noreply@camagru.com>' . "\r\n";
 
   $message = '
   <html>
@@ -14,13 +14,12 @@ function send_verification_email($toAddr, $toUsername, $token, $ip) {
       <title>' . $subject . '</title>
     </head>
     <body>
-      Hello ' . htmlspecialchars($toUsername) . ' </br>
-      To finalyze your subscribtion please click the link below </br>
-      <a href="http://' . $ip . '/mailcheck.php?token=' . $token . '">Verify my email</a>
+      Hello ' . htmlspecialchars($toUsername) . ', </br>
+      Thanks you for chosen camagru :) now last step click on the <a href="http://' . $ip . '/mailcheck.php?token=' . $token . '">link</a> to activate your account. </br>
+      
     </body>
   </html>
   ';
-
   mail($toAddr, $subject, $message, $headers);
 }
 
@@ -29,7 +28,7 @@ function send_forget_mail($toAddr, $toUsername, $password) {
 
   $headers  = 'MIME-Version: 1.0' . "\r\n";
   $headers .= 'Content-type: text/html; charset=UTF-8' . "\r\n";
-  $headers .= 'From: <fpengs@student.42.fr>' . "\r\n";
+  $headers .= 'From: <noreply@camagru.com>' . "\r\n";
 
   $message = '
   <html>
@@ -37,8 +36,9 @@ function send_forget_mail($toAddr, $toUsername, $password) {
       <title>' . $subject . '</title>
     </head>
     <body>
-      Hello ' . htmlspecialchars($toUsername) . ' </br>
-      There is your new password : ' . $password . ' </br>
+      Hello ' . htmlspecialchars($toUsername) . ', </br>
+      Your new password is : ' . $password . ' </br>
+      You can change it from Account. </br>
     </body>
   </html>
   ';
@@ -51,7 +51,7 @@ function send_comment_mail($toAddr, $toUsername, $comment, $fromUsername, $img, 
 
   $headers  = 'MIME-Version: 1.0' . "\r\n";
   $headers .= 'Content-type: text/html; charset=UTF-8' . "\r\n";
-  $headers .= 'From: <fpengs@student.42.fr>' . "\r\n";
+  $headers .= 'From: <noreply@camagru.com>' . "\r\n";
 
   $message = '
   <html>
@@ -60,7 +60,7 @@ function send_comment_mail($toAddr, $toUsername, $comment, $fromUsername, $img, 
     </head>
     <body>
       Hello ' . htmlspecialchars($toUsername) . ' </br>
-      A user just commented one of your montage</br>
+      You have a new comment</br>
       <img src="http://' . $ip . '/montage/' . $img . '" style="width: 388px;height: 291px;display: block;margin: 20px;"></img>
       <span>' . htmlspecialchars($fromUsername) . ': ' . htmlspecialchars($comment) . '</span>
     </body>

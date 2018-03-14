@@ -26,7 +26,6 @@ try {
             `verified` VARCHAR(1) NOT NULL DEFAULT 'N'
             )";
         $dbh->exec($sql);
-        echo "Tables Users created\n";
 
         $sql = "CREATE TABLE `gallery` (
               `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -35,7 +34,6 @@ try {
               FOREIGN KEY (userid) REFERENCES users(id)
             )";
         $dbh->exec($sql);
-        echo "Tables gallery created\n";
 
         $sql = "CREATE TABLE `like` (
               `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -46,7 +44,6 @@ try {
               FOREIGN KEY (galleryid) REFERENCES gallery(id)
             )";
         $dbh->exec($sql);
-        echo "Table like created\n";
 
         $sql = "CREATE TABLE `comment` (
           `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -57,10 +54,10 @@ try {
           FOREIGN KEY (galleryid) REFERENCES gallery(id)
         )";
         $dbh->exec($sql);
-        echo "Table comment created\n";
+        echo "Tables created\n";
 
     } catch (PDOException $e) {
-        echo "Datbase init error: ".$e->getMessage()."\n";
+        echo "Database init error: ".$e->getMessage()."\n";
     }
 
 ?>

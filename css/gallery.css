@@ -131,12 +131,6 @@ h1,h2,h3,h4,h5,h6 {
     }
 }
 
-@media (min-width: 724px) {
-    html {
-        font-size: 15px;
-    }
-}
-
 @media (max-width: 623px) {
     html {
         font-size: 13px;
@@ -145,6 +139,6 @@ h1,h2,h3,h4,h5,h6 {
 
 @media (max-width: 400px) {
     html {
-        font-size: 10px;
+        font-size: 11px;
     }
 }
