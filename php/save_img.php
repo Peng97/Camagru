@@ -1,5 +1,6 @@
 <?php
 	session_start();
+	include_once("setter.php");
 
 	define('UPLOAD_DIR', '../userphoto/');
 	$img = $_POST['snapData'];
@@ -7,8 +8,8 @@
 	$img = str_replace(' ', '+', $img);
 	$data = base64_decode($img);
 	$file = UPLOAD_DIR . uniqid() . '.png';
-	$success = file_put_contents($file, $data);
+	file_put_contents($file, $data);
 
-
+	add_montage($_SESSION['id'], $file);
 	// save to database.. 
 ?>

@@ -11,9 +11,9 @@ session_start();
     <div style="padding-top: 10%;">
         
         <?php if(isset($_SESSION['id'])) {  ?>
-                <h3 style="text-align: center;">You are connected as <?php print_r(htmlspecialchars($_SESSION['username'])); ?> </p>
-                <h3 style="text-align: center;">Now you have full access of <a href="gallery.php" style="color: black;">Camagru</a></p>
-                <h3 style="text-align: center;"><a href="gallery.php" style="color: black;">Take a selfie ?</a></p>
+                <h3 style="text-align: center;">You are connected as <?php print_r(htmlspecialchars($_SESSION['username'])); ?> </h3>
+                <h3 style="text-align: center;">Now you have full access of <a href="gallery.php" style="color: black;">Camagru</a></h3>
+                <h3 style="text-align: center;"><a href="gallery.php" style="color: black;">Take a selfie ?</a></h3>
 
         <?php } else { ?>
 

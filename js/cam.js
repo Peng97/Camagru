@@ -28,6 +28,11 @@ cat_img.src = "../img/cat.png";
 fox_img.style.display = "none";
 fox_img.src = "../img/fox.png";
 
+navigator.getUserMedia = ( navigator.getUserMedia ||
+                       navigator.webkitGetUserMedia ||
+                       navigator.mozGetUserMedia ||
+                       navigator.msGetUserMedia);
+
 navigator.getUserMedia({audio: false, video: true},
     function(stream) {
       steam = stream;
@@ -41,7 +46,7 @@ console.log('getUserMedia() error', error);
 
 // take a shot
 snap.addEventListener('click', function() {
-    context.drawImage(video, 0, 0, 300, 225);
+    context.drawImage(video, 0, 0, 400, 300);
 }, false);
 
 //add image

@@ -33,8 +33,8 @@ session_start();
                         <button id="upload" class="pure-button pure-button-primary">Upload</button>
                         <button id="close" class="pure-button pure-button-primary">Close</button>
                     </p>
-                    <video width="300" height="225"></video>
-                    <canvas width="300" height="225"></canvas>
+                    <video width="400" height="300"></video>
+                    <canvas width="400" height="300"></canvas>
                 </div>
                 <script src="js/cam.js"></script>
             </div>

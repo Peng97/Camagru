@@ -20,6 +20,94 @@ h1,h2,h3,h4,h5,h6 {
     border-radius: 0;
 }
 
+.sizing
+{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width :100%;
+    height:60%;
+    max-width: 60vmin;
+}
+
+.comment
+{
+    overflow: auto;
+    overflow: hidden;
+    outline: none;
+    resize: none;
+    height: 3vmin;
+    width : 75%;
+    padding: 10px;
+    font-size: 2vmin;
+}
+
+.comment_list
+{
+    width :75%;
+    height: 15vmin;
+    padding-left: 5vmin;
+    overflow: auto;
+    font-size: 2vmin;
+    max-height: 10vh;
+}
+
+.send
+{
+    position: relative;
+    top: -2vmin;
+    padding-left: 3%;
+    width: 6vmin;
+    max-width: 6vmin;
+}
+
+.like
+{
+    text-align: left;
+    font-size: 3vmin;
+    padding-left: 5vmin;
+}
+
+/* -------- The Modal (background)  ------*/
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    padding-top: 5vmin; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    width: 80%;
+}
+
+/* The Close Button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 5vmin;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+/* ----------------------- */
+
 .pure-menu-link {
     padding: 1em .7em;
 }
@@ -120,6 +208,8 @@ h1,h2,h3,h4,h5,h6 {
     padding: 1em;
     font-size: 80%;
 }
+
+/* ------------- sizing ---------  */
 
 @media (min-width: 30em) {
     .photo-box, .text-box {
