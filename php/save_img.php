@@ -9,7 +9,8 @@
 	$data = base64_decode($img);
 	$file = UPLOAD_DIR . uniqid() . '.png';
 	file_put_contents($file, $data);
-
+	echo $_SESSION['id'];
+	
 	add_montage($_SESSION['id'], $file);
 	// save to database.. 
 ?>

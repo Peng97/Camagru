@@ -22,8 +22,11 @@ function showModal(event) {
   imageSelected = (event.srcElement && event.srcElement.src) || (event.target && event.target.src);
 }
 
-send[0].onclick = function() {
-	console.log(send);
+if (send.length != 0)
+{
+	send[0].onclick = function() {
+		console.log(send);
+	}
 } 
 
 // When the user clicks on <span> (x), close the modal

@@ -52,31 +52,31 @@ if ($montages != "" && array_key_exists("more", $montages)) {
         <span class="close">&times;</span>
         <img id="img_modal" class="sizing" style="padding-top: 2vmin;">
         <div class="pure-u-1">
-        <?php if(!isset($_SESSION['id'])){ ?>
-                <h3 style="text-align: center;">Connect to comment</h3> 
-        <?php } else { ?>
-                <h2 id="like" class="like"> </h2>
+                    <h2 id="like" class="like"> </h2>
+                    <div class="comment_list">
+                    <p> user : c'est de la merde kkk?</p>
+                    <p> user : c'est de la merde kkk?</p>
+                    <p> user : c'est de la merde kkk?</p>
+                    <p> user : c'est de la merde kkk?</p>
+                    </div>
+                    <div style="padding-top: 3vmin;">
+                        <?php if(isset($_SESSION['id'])){ ?>
+                            <textarea id="comment" class="comment" maxlength="100" placeholder="Your comment here, maxlength is 100."></textarea>
+                            <img id="send" class="send" src=img/send.png> 
+                        <?php } else { ?>
+                            <h3 style="text-align: center;">Connect to comment</h3> 
+                    </div>
+                    <script type="text/javascript" src="js/modal.js"></script>
 
-                <div class="comment_list">
-                <p> user : c'est de la merde kkk?</p>
-                <p> user : c'est de la merde kkk?</p>
-                <p> user : c'est de la merde kkk?</p>
-                <p> user : c'est de la merde kkk?</p>
-                </div>
-                <div style="padding-top: 3vmin;">
-                   <textarea id="comment" class="comment" maxlength="100" placeholder="Your comment here, maxlength is 100."></textarea>
-                    <img id="send" class="send" src=img/send.png> 
-                </div>
-        <?php } ?>
+            <?php } ?>
+
         </div>
 
 
 
     </div>
 </div>
-
-    <script type="text/javascript" src="js/modal.js"></script>
-    <?php include('html/footer.html') ?>
+<?php include('html/footer.html') ?>
 </div>
 
 </body>

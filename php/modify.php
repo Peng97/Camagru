@@ -43,5 +43,5 @@ else{
     $_SESSION['error'] = "Error can't find session id"; 
 }
 
-header("Location: ../user.php");
+header("Location: ../index.php");
 ?>

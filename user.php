@@ -11,7 +11,6 @@ session_start();
         <div>
         	<?php if (!isset($_SESSION['id'])){ ?>
         		<h3 style="text-align: center;padding-top: 20%;"> You need to be connected ! </h3>
-        		<p style="text-align: center;"> Or you juste modified your setting, now you need to relog </p>
         	<?php } else { ?>
             <div class="pure-u-1 form-box" style="padding-top: 10%;">
                 <form method="post" class="pure-form pure-form-aligned" action="php/modify.php">
