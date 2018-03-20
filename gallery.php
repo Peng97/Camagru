@@ -1,11 +1,10 @@
 <?php
 session_start();
 
-include_once("php/getter.php");
-include_once("php/setter.php");
+include_once("php/get_picture.php");
 
 $imagePerPages = 12;
-$montages = get_montages(0, $imagePerPages);
+$montages = get_picture(0, $imagePerPages);
 $more = false;
 $lastMontageId = 0;
 if ($montages != "" && array_key_exists("more", $montages)) {
@@ -50,29 +49,25 @@ if ($montages != "" && array_key_exists("more", $montages)) {
   <!-- Modal content -->
     <div class="modal-content">
         <span class="close">&times;</span>
+                    <a href="#" id="remove" class="remove">Remove</a>
+
         <img id="img_modal" class="sizing" style="padding-top: 2vmin;">
         <div class="pure-u-1">
-                    <h2 id="like" class="like"> </h2>
-                    <div class="comment_list">
-                    <p> user : c'est de la merde kkk?</p>
-                    <p> user : c'est de la merde kkk?</p>
-                    <p> user : c'est de la merde kkk?</p>
-                    <p> user : c'est de la merde kkk?</p>
+
+                    <h3 id="like" class="like" style="color: black; padding-top: 1vmin"></h3>
+                    <div id="comment_list" class="comment_list">
                     </div>
                     <div style="padding-top: 3vmin;">
                         <?php if(isset($_SESSION['id'])){ ?>
                             <textarea id="comment" class="comment" maxlength="100" placeholder="Your comment here, maxlength is 100."></textarea>
                             <img id="send" class="send" src=img/send.png> 
                         <?php } else { ?>
-                            <h3 style="text-align: center;">Connect to comment</h3> 
+                            <h3 style="text-align: center;">Connect to add a comment</h3> 
                     </div>
-                    <script type="text/javascript" src="js/modal.js"></script>
 
             <?php } ?>
-
+                    <script type="text/javascript" src="js/modal.js"></script>
         </div>
-
-
 
     </div>
 </div>

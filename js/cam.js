@@ -68,7 +68,7 @@ close.addEventListener('click', function() {
 //upload
 upload.addEventListener('click', function() {
 jQuery.post('../php/save_img.php', {
-     snapData: canvas.toDataURL('image/png')
+     data: canvas.toDataURL('image/png')
  }).done(function(rs) {
      console.log(rs);
  }).fail(function(err) {

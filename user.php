@@ -37,6 +37,9 @@ session_start();
                         <div class="pure-control-group">
                             <input id="mail" name="mail" type="email" placeholder="Email">
                         </div>
+                        <div class="pure-control-group">
+                            <input id="recive" name="recive" type="text" placeholder="Mail notification : N or Y">
+                        </div>
                         <div>
                             <button type="submit" name="submit" value="y" class="pure-button pure-button-primary">
                                 Modify

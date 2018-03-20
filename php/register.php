@@ -10,8 +10,8 @@ function signup($mail, $username, $password, $host) {
   try {
           $dbh = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
           $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-          $query= $dbh->prepare("SELECT id FROM users WHERE username=:username OR mail=:mail");
-          $query->execute(array(':username' => $username, ':mail' => $mail));
+          $query= $dbh->prepare("SELECT id FROM users WHERE username=:username "); // OR mail=:mail"); if no multi acc for one adress
+          $query->execute(array(':username' => $username)); //, ':mail' => $mail));
 
           if ($val = $query->fetch()) {
             $_SESSION['error'] = "Username or mail already exist";

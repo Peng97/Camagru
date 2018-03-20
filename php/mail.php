@@ -29,9 +29,9 @@ function send_forget_mail($toAddr, $toUsername, $password) {
   $headers  = 'MIME-Version: 1.0' . "\r\n";
   $headers .= 'Content-type: text/html; charset=UTF-8' . "\r\n";
   $headers .= 'From: <noreply@camagru.com>' . "\r\n";
-
   $message = '
   <html>
+
     <head>
       <title>' . $subject . '</title>
     </head>
@@ -53,6 +53,8 @@ function send_comment_mail($toAddr, $toUsername, $comment, $fromUsername, $img, 
   $headers .= 'Content-type: text/html; charset=UTF-8' . "\r\n";
   $headers .= 'From: <noreply@camagru.com>' . "\r\n";
 
+  $img = "http://". $ip . "/userphoto/" . $img;
+
   $message = '
   <html>
     <head>
@@ -60,8 +62,9 @@ function send_comment_mail($toAddr, $toUsername, $comment, $fromUsername, $img, 
     </head>
     <body>
       Hello ' . htmlspecialchars($toUsername) . ' </br>
-      You have a new comment</br>
-      <img src="http://' . $ip . '/montage/' . $img . '" style="width: 388px;height: 291px;display: block;margin: 20px;"></img>
+      You have a new comment on : </br></br>
+      ' . $img .' </br>
+      </br>
       <span>' . htmlspecialchars($fromUsername) . ': ' . htmlspecialchars($comment) . '</span>
     </body>
   </html>

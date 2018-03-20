@@ -17,31 +17,31 @@ if ($_SESSION['id'] != null)
       $nwname = (($_POST['username'] != null)     ? $_POST['username'] : $val['username'] );
       $nwpass = (($_POST['new_password'] != null) ? hash("whirlpool", $_POST['new_password']) : $odpass );
       $nwmail = (($_POST['mail'] != null)         ? $_POST['mail'] : $val['mail'] );
-      
-      $query->closeCursor();
-      $query= $dbh->prepare("UPDATE users SET password=:password, mail=:mail, username=:username WHERE id=:id");
-      $query->execute(array(':password' => $nwpass, ':mail' => $nwmail, ':username' => $nwname, ':id' => $_SESSION['id']));
-    
+      $recive = (($_POST['recive'] != null)       ? $_POST['recive'] : 'Y' );
+
+      if (($recive == null) || ($recive == N) || ($recive == Y))
+      {
+          $query->closeCursor();
+          $query= $dbh->prepare("UPDATE users SET password=:password, mail=:mail, username=:username, recive=:recive WHERE id=:id");
+          $query->execute(array(':password' => $nwpass,
+                                 ':mail' => $nwmail, 
+                                 ':username' => $nwname, 
+                                 ':recive' => $recive, 
+                                 ':id' => $_SESSION['id']
+                                  ));
+          include 'logout.php';  
+      } else {
+        $_SESSION['error'] = 'Recive must be Y or N in UPPERCASE!';
+      }
       //apply change and delog
-      include 'logout.php';
     } else {
       $_SESSION['error'] = 'Wrong password';
     }
     $query->closeCursor();
-    /*
-    $query->closeCursor();
-
-    $pass = uniqid('');
-    $passEncrypt = hash("whirlpool", $pass);
-
-  //  $query= $dbh->prepare("UPDATE users SET password=:password WHERE mail=:mail");
-    $query->execute(array(':password' => $passEncrypt, ':mail' => $userMail));
-
-    */
 }
 else{
     $_SESSION['error'] = "Error can't find session id"; 
 }
 
-header("Location: ../index.php");
+header("Location: ../user.php");
 ?>

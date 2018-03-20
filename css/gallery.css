@@ -61,6 +61,16 @@ h1,h2,h3,h4,h5,h6 {
     max-width: 6vmin;
 }
 
+
+.remove
+{
+    display: none; 
+    text-align: left;
+    font-size: 1.5vmin;
+    padding-left: 5vmin;
+}
+
+
 .like
 {
     text-align: left;

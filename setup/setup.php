@@ -23,7 +23,8 @@ try {
             `mail` VARCHAR(100) NOT NULL,
             `password` VARCHAR(255) NOT NULL,
             `token` VARCHAR(50) NOT NULL,
-            `verified` VARCHAR(1) NOT NULL DEFAULT 'N'
+            `verified` VARCHAR(1) NOT NULL DEFAULT 'N',
+            `recive` VARCHAR(1) NOT NULL DEFAULT 'Y'
             )";
         $dbh->exec($sql);
 
@@ -35,13 +36,10 @@ try {
             )";
         $dbh->exec($sql);
 
-        $sql = "CREATE TABLE `like` (
+        $sql = "CREATE TABLE `upvote` (
               `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
               `userid` INT(11) NOT NULL,
-              `galleryid` INT(11) NOT NULL,
-              `type` VARCHAR(1) NOT NULL,
-              FOREIGN KEY (userid) REFERENCES users(id),
-              FOREIGN KEY (galleryid) REFERENCES gallery(id)
+              `galleryid` INT(11) NOT NULL
             )";
         $dbh->exec($sql);
 
@@ -49,9 +47,7 @@ try {
           `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
           `userid` INT(11) NOT NULL,
           `galleryid` INT(11) NOT NULL,
-          `comment` VARCHAR(255) NOT NULL,
-          FOREIGN KEY (userid) REFERENCES users(id),
-          FOREIGN KEY (galleryid) REFERENCES gallery(id)
+          `comment` VARCHAR(255) NOT NULL
         )";
         $dbh->exec($sql);
         echo "Tables created\n";
