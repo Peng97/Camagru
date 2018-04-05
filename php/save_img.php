@@ -17,6 +17,11 @@
 
 
 	define('UPLOAD_DIR', '../userphoto/');
+
+	if (!file_exists("../userphoto") && !is_dir("../userphoto")) {
+    	mkdir("../userphoto");         
+	}
+
 	$img = $_POST['data'];
 	$img = str_replace('data:image/png;base64,', '', $img);  //format base64 ... 
 	$img = str_replace(' ', '+', $img);
