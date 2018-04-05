@@ -35,4 +35,32 @@ function get_picture($start, $nb) {
     }
 }
 
+function get_user_picture() {
+
+  include_once './setup/database.php';
+
+  try {
+      $dbh = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
+      $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+      $query= $dbh->prepare("SELECT img FROM gallery WHERE userid=:userid");
+      $query->execute(array(':userid' => $_SESSION['id']));
+
+      $i = 0;
+      $tab = null;
+      while (($val = $query->fetch())) {
+        $tab[$i] = $val;
+        $i++;
+      }
+      $query->closeCursor();
+
+      return ($tab);
+    } catch (PDOException $e) {
+      $s;
+      $s['error'] = $e->getMessage();
+      return ($s);
+    }
+
+}
+
+
 ?>

@@ -30,6 +30,31 @@ h1,h2,h3,h4,h5,h6 {
     max-width: 60vmin;
 }
 
+.content
+{
+    position: absolute;
+    left: 0;
+    padding-top: 5%; 
+    padding-bottom: 10%; 
+    width:65%
+}
+
+.side
+{
+    position: absolute;
+    right: 0;
+    bottom:50;
+    width: 30%;
+}
+
+.sizing2
+{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width :100%;
+}
+
 .comment
 {
     overflow: auto;

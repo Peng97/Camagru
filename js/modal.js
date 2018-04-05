@@ -12,7 +12,8 @@ var send = document.getElementById("send");
 var comm = document.getElementById("comment");
 var comment_list = document.getElementById("comment_list");
 var remove = document.getElementById("remove");
-
+var more = document.getElementById("more");
+var less = document.getElementById("less");
 var like = document.getElementById("like");
 
 // partie modal 
@@ -93,22 +94,35 @@ function showModal(event) {
  });
 }
 
+if (send != null)
+{
+  send.onclick = function() {
 
-send.onclick = function() {
+  	jQuery.post( "../php/comment.php",{
+      comm : comm.value,
+      img_id : img_id,
+      owner_id : owner_id,
+      path : img_path
+    }).done(function(rs) {
+          var para = document.createElement("p");
+          var node = document.createTextNode(username + " : " + comm.value);
+          para.appendChild(node);
 
-	jQuery.post( "../php/comment.php",{
-    comm : comm.value,
-    img_id : img_id,
-    owner_id : owner_id,
-    path : img_path
-  }).done(function(rs) {
-        var para = document.createElement("p");
-        var node = document.createTextNode(username + " : " + comm.value);
-        para.appendChild(node);
+          comment_list.appendChild(para);    
+          comm.value = "";
+    });
+  }
 
-        comment_list.appendChild(para);    
-        comm.value = "";
-  });
+
+like.onclick = function (argument) {
+    jQuery.post( "../php/like.php",{
+      img_id : img_id,
+    }).done(function(rs) {
+        (Number(rs) == 1 ) ? nblike += 1 : nblike -= 1; 
+        like.innerHTML = nblike + " like";
+       }
+    );
+  }
 }
 
 // When the user clicks on <span> (x), close the modal
@@ -126,13 +140,27 @@ window.onclick = function(event) {
     }
 }
 
-like.onclick = function (argument) {
-  jQuery.post( "../php/like.php",{
-    img_id : img_id,
-  }).done(function(rs) {
-      (Number(rs) == 1 ) ? nblike += 1 : nblike -= 1; 
-      like.innerHTML = nblike + " like";
-     }
-  );
-
+if (more != null)
+{
+  more.onclick = function(event) {
+        jQuery.post( "../php/moreorless.php",{
+        more : 1,
+      }).done(function(rs) {
+          location.reload();
+         }
+      );
+  }
 }
+
+if (less != null)
+{
+  less.onclick = function(event) {
+      jQuery.post( "../php/moreorless.php",{
+        more : -1,
+      }).done(function(rs) {
+          location.reload();
+         }
+      );
+  }
+}
+

@@ -7,7 +7,7 @@ var canvas = $('canvas'),
      context = canvas.getContext('2d'),
      video = $('video'),
      snap = $('#snap'),
-     close = $('#close'),
+     clean = $('#clean'),
      upload = $('#upload'),
      uploaded = $('#uploaded'),
      dog = $('#dog'),
@@ -47,31 +47,79 @@ console.log('getUserMedia() error', error);
 // take a shot
 snap.addEventListener('click', function() {
     context.drawImage(video, 0, 0, 400, 300);
+
+    upload.addEventListener('click', function() {
+    jQuery.post('../php/save_img.php', {
+         data: canvas.toDataURL('image/png')
+     }).done(function(rs) {
+        location.reload();
+     }).fail(function(err) {
+         console.log(err);
+     });
+    }, false);
+
+        //add image
+    dog.addEventListener('click', function() {
+        context.drawImage(dog_img, 50, 30, 200, 150);
+    }, false);
+
+    cat.addEventListener('click', function() {
+        context.drawImage(cat_img, 50, 30, 200, 150);
+    }, false);
+
+    fox.addEventListener('click', function() {
+        context.drawImage(fox_img, 50, 30, 200, 150);
+    }, false);
+
 }, false);
 
-//add image
-dog.addEventListener('click', function() {
-    context.drawImage(dog_img, 50, 30, 200, 150);
-}, false);
-cat.addEventListener('click', function() {
-    context.drawImage(cat_img, 50, 30, 200, 150);
-}, false);
-fox.addEventListener('click', function() {
-    context.drawImage(fox_img, 50, 30, 200, 150);
+//upload file
+var preview = document.getElementById('upfile');
+
+// clean cam
+clean.addEventListener('click', function() {
+    context.clearRect(0, 0, canvas.width, canvas.height);
 }, false);
 
-// close cam
-close.addEventListener('click', function() {
-    track.stop();
-}, false);
+function previewFile() {
+  var file    = document.querySelector('input[type=file]').files[0];
+  var reader  = new FileReader();
 
-//upload
-upload.addEventListener('click', function() {
-jQuery.post('../php/save_img.php', {
-     data: canvas.toDataURL('image/png')
- }).done(function(rs) {
-     console.log(rs);
- }).fail(function(err) {
-     console.log(err);
- });
-}, false);
+
+  reader.addEventListener("load", function () {
+    preview.src = reader.result;
+
+    preview.onload = function() {
+        context.drawImage(preview, 1, 1, 400, 300);
+
+        upload.addEventListener('click', function() {
+        jQuery.post('../php/save_img.php', {
+             data: canvas.toDataURL('image/png')
+         }).done(function(rs) {
+            location.reload();
+         }).fail(function(err) {
+             console.log(err);
+         });
+        }, false);
+
+            //add image
+        dog.addEventListener('click', function() {
+            context.drawImage(dog_img, 50, 30, 200, 150);
+        }, false);
+
+        cat.addEventListener('click', function() {
+            context.drawImage(cat_img, 50, 30, 200, 150);
+        }, false);
+
+        fox.addEventListener('click', function() {
+            context.drawImage(fox_img, 50, 30, 200, 150);
+        }, false);
+    }
+
+
+  }, false);
+
+  if (file) {
+    reader.readAsDataURL(file);
+  }
+}
