@@ -1,10 +1,7 @@
 <?php
 session_start();
-
 include_once("php/get_picture.php");
-
 $montages = get_picture(0, 6 + number_format($_SESSION['count']));
-
 ?>
 
 <!doctype html>
@@ -14,21 +11,13 @@ $montages = get_picture(0, 6 + number_format($_SESSION['count']));
 <body>
 <div>
     <?php include('html/menu.html') ?>
-<!--
-        <div class="photo-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-3"> for 1/3
-         <div class="photo-box photo-box-thin pure-u-1 pure-u-lg-2-3"> for 2/3
 
-        <aside class="photo-box-caption">
-                <span>by <a href="http://www.dillonmcintosh.tumblr.com/">Dillon McIntosh</a></span>
-        </aside>    for comment;
--->
     <div class="pure-g">
         <?php
             for ($i = 0; $montages[$i] && $i < 6 + $_SESSION['count']; $i++) {
                 echo  " <div id=\"icon\" class=\"photo-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-3\">
                             <img class=\"sizing\" src=". $montages[$i]['img']. ">
                         </div>
-
                 ";
             }
         ?>

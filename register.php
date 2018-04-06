@@ -9,7 +9,7 @@ session_start();
     <meta name="description" content="A layout example that shows off a blog page with a list of posts.">
     <title>Register Page &ndash; Camagru </title>
     
-    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css">
     <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/grids-responsive-min.css">
     <link rel="stylesheet" href="css/blog.css">
 

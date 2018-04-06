@@ -39,7 +39,9 @@ include '../setup/database.php';
       	$i++;
       }
       print_r($tab);
+      $tab = null;
     } catch (PDOException $e) {
+      $tab = null;
     	echo $e;
     }
 

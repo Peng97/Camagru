@@ -60,6 +60,13 @@ if (strlen($username) > 50 || strlen($username) < 3) {
   return;
 }
 
+if (!preg_match('/[A-Za-z].*[0-9]|[0-9].*[A-Za-z]/', $password))
+{
+  $_SESSION['error'] = 'Password must have number and letter';
+  header("Location: ../register.php");
+  return;
+}
+
 if (strlen($password) < 3) {
   $_SESSION['error'] = $_SESSION['error']."Password should be beetween 3 and 255 characters. ";
   header("Location: ../register.php");

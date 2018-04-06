@@ -5,10 +5,9 @@ session_start();
 <!doctype html>
 <html lang="en">
     <?php include('html/header.html') ?>
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <body>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <?php include('html/menu.html') ?>
-    <div class="pure-u-1">
         <div>
         	<?php if (!isset($_SESSION['id'])){ ?>
         		<h3 style="text-align: center; padding-top: 20%;"> You need to be connected ! </h3>
@@ -51,7 +50,7 @@ session_start();
 
                 <div class="pure-g">
                     <?php
-                        for ($i = 0; $montages[$i] && $i < $_SESSION['count']; $i++) {
+                        for ($i = 0; $montages[$i] && $i < $_SESSION['count'] + 6; $i++) {
                             echo  " <div id=\"icon\" class=\"photo-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-6\">
                                         <img class=\"sizing\" src=". $montages[$i]['img']. ">
                                     </div>
@@ -93,9 +92,7 @@ session_start();
 
                     </div>
                 </div>
-
             <script src="js/cam.js"></script>
-            </div>
         </div>
         <?php } ?>
     </div>

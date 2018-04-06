@@ -19,7 +19,13 @@ if ($_SESSION['id'] != null)
       $nwmail = (($_POST['mail'] != null)         ? $_POST['mail'] : $val['mail'] );
       $recive = (($_POST['recive'] != null)       ? $_POST['recive'] : 'Y' );
 
-      if (($recive == null) || ($recive == N) || ($recive == Y))
+
+      if ($_POST['new_password'] != null)
+      {
+        if (!preg_match('/[A-Za-z].*[0-9]|[0-9].*[A-Za-z]/', $_POST['new_password']))
+          $_SESSION['error'] = 'Password must have number and letter';
+      }
+      else if (($recive == null) || ($recive == N) || ($recive == Y))
       {
           $query->closeCursor();
           $query= $dbh->prepare("UPDATE users SET password=:password, mail=:mail, username=:username, recive=:recive WHERE id=:id");
